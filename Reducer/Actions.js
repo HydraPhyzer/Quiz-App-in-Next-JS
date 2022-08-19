@@ -1,7 +1,11 @@
-export let UserSelecOption=()=>
+export let UserSelecOption=(Qu,In)=>
 {
     return{
-        type:"Selected"
+        type:"Selected",
+        payload:{
+            Qu,
+            In
+        }
     }
 }
 
