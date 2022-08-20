@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import API from "../API";
 import { useSelector, useDispatch } from "react-redux";
-import { Inc, Dec, UserSelecOption } from "../Reducer/Actions";
+import { Inc, Dec, UserSelecOption, ShowResult } from "../Reducer/Actions";
 
 const Question = () => {
-  let [State,setState]=useState(null);
-  let [Index,setIndex]=useState(null);
+  let [State, setState] = useState(null);
+  let [Index, setIndex] = useState(null);
+  let [Res,setRes]=useState(null);
 
   let Dispatch = useDispatch();
   let Stats = useSelector((Stat) => {
     return Stat.Reducer;
   });
+  let StatsTwo = useSelector((Stat) => {
+    return Stat.ReducerTwo;
+  });
 
-  useEffect(()=>
-  {
-    if(Stats.UserArray[Stats.Value]!=null)
-    {
-      setIndex(Stats.UserArray[Stats.Value])
-      setState(true)
+  useEffect(() => {
+    if (Stats.UserArray[Stats.Value] != null) {
+      setIndex(Stats.UserArray[Stats.Value]);
+      setState(true);
+    } else {
+      setState(false);
+      setIndex(null);
     }
-    else
-    {
-      setState(false)
-      setIndex(null)
-    }
-  })
+  });
 
   return (
-    <>
+    <div>
       <div className="text-white p-3 my-2 bg-black rounded-md">
         <div className="Ask">
           Question : {`${API[Stats.Value].Question} ? `}{" "}
@@ -38,7 +38,7 @@ const Question = () => {
             return (
               <label
                 key={Ind}
-                onClick={() => {  
+                onClick={() => {
                   Dispatch(UserSelecOption(Stats.Value, Ind));
                 }}
                 htmlFor={Ind}
@@ -49,7 +49,9 @@ const Question = () => {
                   id={Ind}
                   name={Stats.Value}
                   value={Elem}
-                  className={`appearance-none bg-white h-[15px] w-[15px] rounded-full bg-${(Index!==null &&Index==Ind ) && 'yellow-500'}`}
+                  className={`appearance-none bg-white h-[15px] w-[15px] rounded-full bg-${
+                    Index !== null && Index == Ind && "yellow-500"
+                  }`}
                 />
                 <p>{Elem}</p>
               </label>
@@ -79,6 +81,7 @@ const Question = () => {
           Next
         </div>
         <div
+          onClick={()=>{Dispatch(ShowResult())}}
           className={`B3 ${
             Stats.Value == API.length - 1
               ? "block bg-red-500 text-white w-[50%] p-2 rounded-md cursor-pointer text-center"
@@ -88,8 +91,8 @@ const Question = () => {
           Submit
         </div>
       </div>
-    </>
-  );
-};
+      </div>
+      );
+  };
 
 export default Question;

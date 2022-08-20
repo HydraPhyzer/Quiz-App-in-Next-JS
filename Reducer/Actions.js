@@ -21,3 +21,9 @@ export let Dec=()=>
         type:"Dec"
     }
 }
+export let ShowResult=()=>
+{
+    return{
+        type:"ShowResult"
+    }
+}
