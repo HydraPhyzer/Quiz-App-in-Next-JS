@@ -51,7 +51,7 @@ const Result = () => {
         </div>
 
         <div className="Right sm:col-span-5 sm:row-span-2">
-          <div className="C bg-[#9b59b6] h-[30vh] sm:h-max p-3 sm:w-max sm:max-h-[100%] All flex-col overflow-scroll w-[90vw] mt-2 sm:mt-0 absolute">
+          <div className="C bg-[#9b59b6] h-[30vh] sm:h-[100%] p-3 sm:w-max sm:max-h-[100%] All flex-col overflow-scroll w-[90vw] mt-2 sm:mt-0 absolute">
             {API.map((Elem, Ind) => {
               return (
                 <div>
