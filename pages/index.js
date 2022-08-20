@@ -21,7 +21,7 @@ let Home = () => {
           <Question />
         </div>
       ) : (
-        <div className="w-[100vw] h-[100vh] grid place-items-center">
+        <div className="w-[100vw] h-[50vh] sm:h-[100vh] grid place-items-center">
         <Result/>
         </div>
       )}

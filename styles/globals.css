@@ -27,10 +27,6 @@ body {
 {
   display: none;
 }
-.ABC
-{
-  background: conic-gradient(#4bcffa 0 90%, transparent 0 0%);
-}
 .B1 p:first-child
 {
   padding: 5px;
